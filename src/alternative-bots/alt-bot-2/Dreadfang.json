@@ -1,0 +1,11 @@
+{
+    "name": "Berkah Ramadhan",
+    "version": "1.0",
+    "authors": [ "Rana", "Newa", "Izzat"],
+    "description": "Berputar dalam lingkaran sampai medeteksi musuh lalu akan menabrak musuh tersebut sampai mati",
+    "homepage": "",
+    "countryCodes": [ "id" ],
+    "platform": ".Net 9.0",
+    "programmingLang": "C# 10.0"
+  }
+  
