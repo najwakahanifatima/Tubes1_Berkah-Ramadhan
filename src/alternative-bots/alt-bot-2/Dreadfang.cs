@@ -10,8 +10,6 @@ public class Dreadfang : Bot
     private Dictionary<int, double> enemies = new Dictionary<int, double>(); // Simpan ID & Energi musuh
     private int targetId = -1; 
     private const double safeDistance = 25; 
-    private int idleShotCounter = 0;
-    private int idleShotCooldown = 10;
 
     static void Main(string[] args)
     {
@@ -24,6 +22,7 @@ public class Dreadfang : Bot
     {
         base.OnGameStarted(e);
         AdjustRadarForBodyTurn = true;
+        //AdjustGunForBodyTurn = true;
     }
 
 public override void Run()
@@ -45,12 +44,13 @@ public override void Run()
         Forward(100);
         TargetSpeed = 5;
         RadarTurnRate = MaxRadarTurnRate;
+        //GunTurnRate = MaxGunTurnRate;
     }
 }
     public override void OnScannedBot(ScannedBotEvent e)
     {
         RadarTurnRate = MaxRadarTurnRate;
-
+        //GunTurnRate = MaxGunTurnRate;
         enemies[e.ScannedBotId] = e.Energy;
 
         // Cari musuh dengan energi paling rendah
@@ -60,13 +60,14 @@ public override void Run()
 
         // Kalau ada target valid, fokuskan turret dan serang
         if(targetId != -1 && enemies.ContainsKey(targetId) && enemies.Count <= 1){
+            TargetSpeed = 2;
             var target = enemies[targetId];
             TurnToFaceTarget(e.X, e.Y);
-            if (target > 16) Fire(3);
-            else if (target > 10) Fire(2);
-            else if (target > 4) Fire(1);
-            else if (target > 2) Fire(0.5);
-            else if (target > 0.4) Fire(0.1);
+            if (DistanceTo(e.X, e.Y) > 300) Fire(0.2);
+            else if (target > 200) Fire(0.5);
+            else if (target > 150) Fire(1);
+            else if (target > 80) Fire(2);
+            else Fire(3);
         }
     }
 
