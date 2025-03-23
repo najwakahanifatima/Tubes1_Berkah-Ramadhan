@@ -7,7 +7,7 @@ using Robocode.TankRoyale.BotApi.Events;
 public class Dreadfang : Bot
 {
     private int turnDirection = 1;
-    private Dictionary<int, double> enemies = new Dictionary<int, double>(); // Simpan ID & Energi musuh
+    private Dictionary<int, double> enemies = new Dictionary<int, double>();
     private int targetId = -1; 
     private const double safeDistance = 25; 
 
