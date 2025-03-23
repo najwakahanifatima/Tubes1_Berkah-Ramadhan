@@ -7,9 +7,10 @@ using Robocode.TankRoyale.BotApi.Events;
 public class Dreadfang : Bot
 {
     private int turnDirection = 1;
-    private Dictionary<int, double> enemies = new Dictionary<int, double>(); // Simpan ID & Energi musuh
+    private Dictionary<int, double> enemies = new Dictionary<int, double>();
     private int targetId = -1; 
     private const double safeDistance = 25; 
+    private int countEnemies = 0;
 
     static void Main(string[] args)
     {
@@ -22,6 +23,7 @@ public class Dreadfang : Bot
     {
         base.OnGameStarted(e);
         AdjustRadarForBodyTurn = true;
+        countEnemies = enemies.Count;
         //AdjustGunForBodyTurn = true;
     }
 
@@ -59,7 +61,7 @@ public override void Run()
         }
 
         // Kalau ada target valid, fokuskan turret dan serang
-        if(targetId != -1 && enemies.ContainsKey(targetId) && enemies.Count <= 1){
+        if(targetId != -1 && enemies.ContainsKey(targetId) && countEnemies <= 2){
             TargetSpeed = 2;
             var target = enemies[targetId];
             TurnToFaceTarget(e.X, e.Y);
@@ -70,7 +72,9 @@ public override void Run()
             else Fire(3);
         }
     }
-
+    public override void OnBotDeath(BotDeathEvent e){
+        countEnemies--;
+    }
     public override void OnHitByBullet(HitByBulletEvent e)
     {
         TargetSpeed = 8;
