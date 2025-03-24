@@ -13,7 +13,7 @@ Survival bot yang menggunakan staregi Greedy by Avoiding Damage. Bot menghindari
 ### 👑 Alt Bot - KingBot 
 Bot modifikasi dan penyempurnaan dari SpinBot dengan strategi Greedy by Spinning, Positioning, and Evaluating. Bot memutar pada posisi strategis di 
 
-## Requirement dan Instalasi Program
+## Requirement dan Compile Program
 1. Gunakan dotnet versi 9.0 atau lakukan penyesuaian versi pada file `.csproj`.
 2. Jalankan [program (game engine)](https://github.com/Ariel-HS/tubes1-if2211-starter-pack/releases/tag/v1.0) `.jar` RoboCode Tank Royale yang sudah di-build.
 3. Mulai server dengan menekan menu Server --> Start Local Server pada aplikasi.
