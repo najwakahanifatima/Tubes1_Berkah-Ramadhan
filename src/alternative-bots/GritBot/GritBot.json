@@ -1,0 +1,10 @@
+{
+    "name": "GritBot",
+    "version": "1.0",
+    "authors": ["Berkah Ramadhan"],
+    "description": "A bot that target one enemy and shoot hard.",
+    "homepage": "",
+    "countryCodes": ["id"],
+    "platform": ".Net 9.0",
+    "programmingLang": "C# 10.0"
+  }   
